@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 3.10)
+project(cpp_server)
+file(GLOB_RECURSE srcs ./src/*.cpp)
+add_library(cpp_server STATIC ${srcs})
+target_include_directories(cpp_server PUBLIC ./include)
