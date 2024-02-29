@@ -18,6 +18,7 @@
 ```cpp
 cmake -B build
 cmake --build build
+./build/test_cpp_server
 ```
 
 # 快速使用
@@ -36,7 +37,8 @@ int main(){
     
     // get请求
     app.get("/", [](Req &req, Res &res){
-        res.send("hello get"); //要发送的信息
+        printf("name: %s\n", req.kv_data.at("name").c_str()); // 获取get参数
+        res.send("hello get");
     });
     app.run();
 }
@@ -46,6 +48,7 @@ int main(){
 
 ```c++
 app.post("/", [](Req &req, Res &res){
+    printf("name: %s\n", req.kv_data.at("name").c_str()); // 获取post参数
     res.send("hello post");
 });
 ```

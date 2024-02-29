@@ -2,7 +2,7 @@
  * @Author: string
  * @Date: 2024-02-29 09:19:11
  * @LastEditors: string
- * @LastEditTime: 2024-02-29 20:29:07
+ * @LastEditTime: 2024-02-29 22:46:14
  * @FilePath: /new_cpp_server/main.cpp
  * @Description: 
  * 
@@ -18,6 +18,7 @@ int main(){
 
     // get请求
     app.get("/", [](Req &req, Res &res){
+        printf("name: %s\n", req.kv_data.at("name").c_str()); // 获取get参数
         res.send("hello get");
     });
 
@@ -26,6 +27,7 @@ int main(){
 
     // post请求
     app.post("/", [](Req &req, Res &res){
+        printf("name: %s\n", req.kv_data.at("name").c_str()); // 获取post参数
         res.send("hello post");
     });
 
