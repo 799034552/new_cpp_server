@@ -92,3 +92,4 @@ app.static_file("/static", "/var/www/static");
 # 参考
 
 * 异步io的参考示例[shuveb/io_uring-by-example: A companion repository for the io_uring by Example article series (github.com)](https://github.com/shuveb/io_uring-by-example/tree/master)
+* websocket帧解析参考[这里](https://developer.mozilla.org/zh-CN/docs/Web/API/WebSockets_API/Writing_WebSocket_servers)
