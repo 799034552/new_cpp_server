@@ -66,7 +66,7 @@ void AsyncHandle::run(){
         switch (job.notify_type)
         {
         case NOTIFY_TYPE::ADD_JOB:
-            printf("异步线程有新工作\n");
+            // printf("异步线程有新工作\n");
             start_slove_job();
             add_notify_listen();
             break;
@@ -74,14 +74,14 @@ void AsyncHandle::run(){
             if (cqe->res < 0)
                 perror("读取返回异常"),exit(0);
             job.read_size = cqe->res;
-            printf("异步线程读%d\n", job.read_size);
+            // printf("异步线程读%d\n", job.read_size);
             write_task(&job);
             break;
         case NOTIFY_TYPE::END_WRITE:
             if (cqe->res < 0)
                 perror("写入返回异常"),exit(0);
             job.had_send_size += cqe->res;
-            printf("异步线程写%d\n", job.had_send_size);
+            // printf("异步线程写%d\n", job.had_send_size);
             if (job.had_send_size < job.file_size){
                 read_task(&job);
             } else {

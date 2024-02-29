@@ -2,7 +2,7 @@
  * @Author: string
  * @Date: 2024-02-26 10:25:26
  * @LastEditors: string
- * @LastEditTime: 2024-02-29 16:37:15
+ * @LastEditTime: 2024-02-29 21:22:28
  * @FilePath: /new_cpp_server/cpp_server/src/Server.cpp
  * @Description: 主要的客户端
  * 
@@ -41,13 +41,14 @@ void Server::listen(int port_, std::function<void()> fn,int thread_num){
     inet_pton(AF_INET, "0.0.0.0",&addr.sin_addr);
     addr.sin_family = AF_INET;
     addr.sin_port = htons(port_);
-    if ( bind(listenfd, (sockaddr*)&addr, sizeof(addr)) < 0)
-        perror("create listen socket fail"),exit(0);
-    
     // 跳过wait_time直接关闭，仅调试时开启
     // #ifdef DEBUG
     int temp = 1;
     setsockopt(listenfd, SOL_SOCKET, SO_REUSEADDR, &temp, sizeof(temp));
+    if ( bind(listenfd, (sockaddr*)&addr, sizeof(addr)) < 0)
+        perror("create listen socket fail"),exit(0);
+    
+    
     // #endif
     ::listen(listenfd, 10240);
 
@@ -119,9 +120,11 @@ void Server::post(const string& url, const std::function<void(Req&, Res&)> &fn)
 {
     HttpClient::post_progress[url].emplace_back(fn);
 }
-
 void Server::static_file(string url, string local_url){
     HttpClient::static_map[url] = local_url;
+}
+void Server::ws(const string& url, const std::function<void(WSClient*)> &fn){
+    WSClient::handle_fn[url] = fn;
 }
 
 

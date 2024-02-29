@@ -2,7 +2,7 @@
  * @Author: string
  * @Date: 2024-02-26 10:25:31
  * @LastEditors: string
- * @LastEditTime: 2024-02-29 14:09:47
+ * @LastEditTime: 2024-02-29 19:56:30
  * @FilePath: /new_cpp_server/cpp_server/include/cpp_server/Server.h
  * @Description: 
  * 
@@ -16,6 +16,7 @@
 #include<vector>
 #include<cpp_server/conf.h>
 #include<cpp_server/Client/HttpClient.h>
+#include<cpp_server/Client/WSClient.h>
 using std::string;
 using std::function;
 using std::vector;
@@ -34,6 +35,7 @@ class Server{
         void listen(int port_, std::function<void()> fn = NULL,int thread_num = 4);
         void get(const string& url, const std::function<void(Req&, Res&)> &fn);
         void post(const string& url, const std::function<void(Req&, Res&)> &fn);
+        void ws(const string& url, const std::function<void(WSClient*)> &fn);
         void run();
         void static_file(string url, string local_url);
         ~Server();

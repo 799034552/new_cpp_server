@@ -2,7 +2,7 @@
  * @Author: string
  * @Date: 2024-02-26 15:43:03
  * @LastEditors: string
- * @LastEditTime: 2024-02-29 17:36:13
+ * @LastEditTime: 2024-02-29 19:57:29
  * @FilePath: /new_cpp_server/cpp_server/src/SubReactor.cpp
  * @Description: 
  * 
@@ -63,11 +63,12 @@ void SubReactor::delete_clients(){
             client_pool.erase(now_client);
             fd2Client.erase(now_client->fd);
             now_client->set_close_fn(nullptr);
-            printf("用户%d删除\n", now_client->fd);
+            // printf("用户%d删除\n", now_client->fd);
             if (!now_client->need_close_fd){
+                
                 // 不用关闭fd，肯定是升级为websocket协议,添加websocket用户
                 HttpClient* http_now_client = (HttpClient*)now_client.get();
-                SP_Client new_client = SP_WSClient(new WSClient(now_client->fd, epollfd, BUF, false, http_now_client->header["Sec-WebSocket-Key"]));
+                SP_Client new_client = SP_WSClient(new WSClient(now_client->fd, epollfd, BUF, false, http_now_client->header["Sec-WebSocket-Key"], http_now_client->header["url"]));
                 new_client->end_file_wake_up_fd = end_file_wake_up_fd;
                 // 添加删除事件
                 new_client->set_close_fn([this, new_client]{

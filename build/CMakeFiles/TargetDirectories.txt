@@ -1,0 +1,6 @@
+/home/string/c/c/new_cpp_server/build/CMakeFiles/test_cpp_server.dir
+/home/string/c/c/new_cpp_server/build/CMakeFiles/edit_cache.dir
+/home/string/c/c/new_cpp_server/build/CMakeFiles/rebuild_cache.dir
+/home/string/c/c/new_cpp_server/build/cpp_server/CMakeFiles/cpp_server.dir
+/home/string/c/c/new_cpp_server/build/cpp_server/CMakeFiles/edit_cache.dir
+/home/string/c/c/new_cpp_server/build/cpp_server/CMakeFiles/rebuild_cache.dir

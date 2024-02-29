@@ -2,7 +2,7 @@
  * @Author: string
  * @Date: 2024-02-29 09:19:11
  * @LastEditors: string
- * @LastEditTime: 2024-02-29 14:09:40
+ * @LastEditTime: 2024-02-29 20:29:07
  * @FilePath: /new_cpp_server/main.cpp
  * @Description: 
  * 
@@ -27,6 +27,16 @@ int main(){
     // post请求
     app.post("/", [](Req &req, Res &res){
         res.send("hello post");
+    });
+
+    // websocket请求
+    app.ws("/websocket", [](WSClient* client){
+        client->on_connect([](WSClient* _client){
+            _client->send("hello socket");
+        });
+        client->on_get([](string data,WSClient* _client){
+            _client->send("i get " + data);
+        });
     });
     app.run();
 }

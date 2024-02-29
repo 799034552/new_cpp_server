@@ -2,7 +2,7 @@
  * @Author: string
  * @Date: 2024-02-26 10:45:31
  * @LastEditors: string
- * @LastEditTime: 2024-02-29 17:13:44
+ * @LastEditTime: 2024-02-29 21:47:15
  * @FilePath: /new_cpp_server/cpp_server/src/Client/HttpClient.cpp
  * @Description:
  *
@@ -89,12 +89,13 @@ void HttpClient::read_fn()
     else if (http_state == HTTP_STATE::WS){
         // 如果读取到了WS升级协议
         // 向subReactor添加websocket客户端，并自杀
+        // printf("变为变为websocket\n");
         need_close_fd = false;
         is_close = true;
     }
     // http请求读取完成
     if (http_state == HTTP_STATE::OK){
-        printf("http读取完成\n");
+        // printf("http读取完成\n");
         string &url = header["url"];
         // 如果是GET请求
         if (header["method"] == "GET"){
@@ -107,13 +108,13 @@ void HttpClient::read_fn()
                     base_url = url.substr(0, pos);
                     leaf_url = url.substr(pos);
                 }
-                printf("base_url:%s,leaf_url%s\n",base_url.c_str(), leaf_url.c_str());
+                // printf("base_url:%s,leaf_url%s\n",base_url.c_str(), leaf_url.c_str());
                 // 查找静态文件映射表
                 auto find_res = static_map.find(base_url);
                 if (find_res != static_map.end()){
                     string file_path = find_res->second + leaf_url;
                     struct stat buffer;
-                    printf("收到了文件地址%s\n", file_path.c_str());
+                    // printf("收到了文件地址%s\n", file_path.c_str());
                     if (stat(file_path.c_str(), &buffer) == 0){
                         // 如果文件存在
                         file_name = file_path;

@@ -2,7 +2,7 @@
  * @Author: string
  * @Date: 2024-02-26 10:34:48
  * @LastEditors: string
- * @LastEditTime: 2024-02-29 11:17:59
+ * @LastEditTime: 2024-02-29 21:46:49
  * @FilePath: /new_cpp_server/cpp_server/src/Client/Client.cpp
  * @Description:
  *
@@ -27,7 +27,7 @@ Client::Client(const int &fd_, int _epollfd, char (&_BUF)[BUF_SIZE], bool is_nee
 Client::~Client() {
     if (fd > 0){
         if (need_close_fd){
-            printf("真正地删除事件");
+            // printf("真正地删除事件");
             // 将监听事件从内核删除
             epoll_ctl(epollfd, EPOLL_CTL_DEL, fd, nullptr);
             close(fd);
@@ -55,16 +55,16 @@ void Client::handle_event()
 
         // 每次写入都执行写入回调
         read_all();
-        printf("用户可读，消息为:%s\n", rec_buf.c_str());
+        // printf("用户可读，消息为:%s\n", rec_buf.c_str());
         read_fn();
     }
     // 可写
     else if (revent & EPOLLOUT)
     {
-        printf("用户可写:%s\n", send_buf.c_str());
+        // printf("用户可写:%s\n", send_buf.c_str());
         // 发送后完成回调
         if(write_all()){
-            printf("用户写完成\n");
+            // printf("用户写完成\n");
             write_fn();
             // 写完后如果读的也关闭了那么就关闭
             if (is_read_close)
@@ -73,7 +73,7 @@ void Client::handle_event()
     }
     // 关闭连接了
     if (is_close){
-        printf("要关闭连接\n");
+        // printf("要关闭连接\n");
         if (close_fn) close_fn();
     }
 }
@@ -102,7 +102,7 @@ int Client::read_all()
         return sum;
     }
     if (n < 0 && (errno == EAGAIN || errno == EWOULDBLOCK)){
-        printf("读完这次了\n");
+        // printf("读完这次了\n");
         return sum;
     }
         

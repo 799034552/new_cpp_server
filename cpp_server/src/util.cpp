@@ -2,7 +2,7 @@
  * @Author: string
  * @Date: 2024-02-26 11:09:16
  * @LastEditors: string
- * @LastEditTime: 2024-02-29 17:47:13
+ * @LastEditTime: 2024-02-29 18:53:39
  * @FilePath: /new_cpp_server/cpp_server/src/util.cpp
  * @Description:
  *
@@ -103,4 +103,11 @@ std::string m_base64_encode(unsigned char const* bytes_to_encode, unsigned int i
 	}
  
 	return ret;
+}
+
+void umask(char *data,int len,char *mask)
+{
+    int i;
+    for (i=0;i<len;++i)
+        *(data+i) ^= *(mask+(i%4));
 }

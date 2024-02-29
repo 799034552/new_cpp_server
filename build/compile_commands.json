@@ -1,0 +1,47 @@
+[
+{
+  "directory": "/home/string/c/c/new_cpp_server/build",
+  "command": "/usr/bin/g++  -I/home/string/c/c/new_cpp_server/cpp_server/./include -g -o CMakeFiles/test_cpp_server.dir/main.cpp.o -c /home/string/c/c/new_cpp_server/main.cpp",
+  "file": "/home/string/c/c/new_cpp_server/main.cpp"
+},
+{
+  "directory": "/home/string/c/c/new_cpp_server/build/cpp_server",
+  "command": "/usr/bin/g++  -I/home/string/c/c/new_cpp_server/cpp_server/./include -g -o CMakeFiles/cpp_server.dir/src/AsyncHandle.cpp.o -c /home/string/c/c/new_cpp_server/cpp_server/src/AsyncHandle.cpp",
+  "file": "/home/string/c/c/new_cpp_server/cpp_server/src/AsyncHandle.cpp"
+},
+{
+  "directory": "/home/string/c/c/new_cpp_server/build/cpp_server",
+  "command": "/usr/bin/g++  -I/home/string/c/c/new_cpp_server/cpp_server/./include -g -o CMakeFiles/cpp_server.dir/src/Client/Client.cpp.o -c /home/string/c/c/new_cpp_server/cpp_server/src/Client/Client.cpp",
+  "file": "/home/string/c/c/new_cpp_server/cpp_server/src/Client/Client.cpp"
+},
+{
+  "directory": "/home/string/c/c/new_cpp_server/build/cpp_server",
+  "command": "/usr/bin/g++  -I/home/string/c/c/new_cpp_server/cpp_server/./include -g -o CMakeFiles/cpp_server.dir/src/Client/HttpClient.cpp.o -c /home/string/c/c/new_cpp_server/cpp_server/src/Client/HttpClient.cpp",
+  "file": "/home/string/c/c/new_cpp_server/cpp_server/src/Client/HttpClient.cpp"
+},
+{
+  "directory": "/home/string/c/c/new_cpp_server/build/cpp_server",
+  "command": "/usr/bin/g++  -I/home/string/c/c/new_cpp_server/cpp_server/./include -g -o CMakeFiles/cpp_server.dir/src/Client/ReflexClient.cpp.o -c /home/string/c/c/new_cpp_server/cpp_server/src/Client/ReflexClient.cpp",
+  "file": "/home/string/c/c/new_cpp_server/cpp_server/src/Client/ReflexClient.cpp"
+},
+{
+  "directory": "/home/string/c/c/new_cpp_server/build/cpp_server",
+  "command": "/usr/bin/g++  -I/home/string/c/c/new_cpp_server/cpp_server/./include -g -o CMakeFiles/cpp_server.dir/src/Client/WSClient.cpp.o -c /home/string/c/c/new_cpp_server/cpp_server/src/Client/WSClient.cpp",
+  "file": "/home/string/c/c/new_cpp_server/cpp_server/src/Client/WSClient.cpp"
+},
+{
+  "directory": "/home/string/c/c/new_cpp_server/build/cpp_server",
+  "command": "/usr/bin/g++  -I/home/string/c/c/new_cpp_server/cpp_server/./include -g -o CMakeFiles/cpp_server.dir/src/Server.cpp.o -c /home/string/c/c/new_cpp_server/cpp_server/src/Server.cpp",
+  "file": "/home/string/c/c/new_cpp_server/cpp_server/src/Server.cpp"
+},
+{
+  "directory": "/home/string/c/c/new_cpp_server/build/cpp_server",
+  "command": "/usr/bin/g++  -I/home/string/c/c/new_cpp_server/cpp_server/./include -g -o CMakeFiles/cpp_server.dir/src/SubReactor.cpp.o -c /home/string/c/c/new_cpp_server/cpp_server/src/SubReactor.cpp",
+  "file": "/home/string/c/c/new_cpp_server/cpp_server/src/SubReactor.cpp"
+},
+{
+  "directory": "/home/string/c/c/new_cpp_server/build/cpp_server",
+  "command": "/usr/bin/g++  -I/home/string/c/c/new_cpp_server/cpp_server/./include -g -o CMakeFiles/cpp_server.dir/src/util.cpp.o -c /home/string/c/c/new_cpp_server/cpp_server/src/util.cpp",
+  "file": "/home/string/c/c/new_cpp_server/cpp_server/src/util.cpp"
+}
+]

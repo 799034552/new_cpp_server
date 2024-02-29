@@ -1,0 +1,2 @@
+/usr/bin/ar qc libcpp_server.a CMakeFiles/cpp_server.dir/src/AsyncHandle.cpp.o CMakeFiles/cpp_server.dir/src/Client/Client.cpp.o CMakeFiles/cpp_server.dir/src/Client/HttpClient.cpp.o CMakeFiles/cpp_server.dir/src/Client/ReflexClient.cpp.o CMakeFiles/cpp_server.dir/src/Client/WSClient.cpp.o CMakeFiles/cpp_server.dir/src/Server.cpp.o CMakeFiles/cpp_server.dir/src/SubReactor.cpp.o CMakeFiles/cpp_server.dir/src/util.cpp.o
+/usr/bin/ranlib libcpp_server.a
