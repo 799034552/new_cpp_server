@@ -2,7 +2,7 @@
  * @Author: string
  * @Date: 2024-02-26 15:42:07
  * @LastEditors: string
- * @LastEditTime: 2024-02-28 20:15:57
+ * @LastEditTime: 2024-02-29 14:52:28
  * @FilePath: /new_cpp_server/cpp_server/include/cpp_server/SubReactor.h
  * @Description: 
  * 
@@ -43,6 +43,9 @@ class SubReactor{
         void add_client(int fd);
         void delete_clients();
         epoll_event epoll_events[EPOLL_SIZE];
+
+        //文件传输部分
+        int end_file_wake_up_fd;
 
         SubReactor();
         void run();

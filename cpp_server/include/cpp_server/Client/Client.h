@@ -2,7 +2,7 @@
  * @Author: string
  * @Date: 2024-02-26 10:34:54
  * @LastEditors: string
- * @LastEditTime: 2024-02-27 23:06:28
+ * @LastEditTime: 2024-02-29 15:11:57
  * @FilePath: /new_cpp_server/cpp_server/include/cpp_server/Client/Client.h
  * @Description: 
  * 
@@ -18,6 +18,7 @@
 #include<string>
 #include<cpp_server/util.h>
 #include<cpp_server/conf.h>
+#include<cpp_server/AsyncHandle.h>
 using std::string;
 class Client {
     using CallBack = std::function<void()>;
@@ -47,6 +48,10 @@ class Client {
         void change_to_write();
 
     public:
+        // 文件传输的东西
+        string file_name; //传输的文件以及是否正在传输标识
+        int end_file_wake_up_fd; //文件传输传输完成要通知的fd
+
         char (&BUF)[BUF_SIZE];
         Client(const int &fd_, int _epollfd, char (&_BUF)[BUF_SIZE],bool is_need_epoll=true);
         // Client(const int &fd_, SubReactor *_parent):fd(fd_),is_close(false),parent(_parent),epollfd(_parent->epollfd) { set_fd_noblock(fd); };

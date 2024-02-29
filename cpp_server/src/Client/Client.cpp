@@ -2,14 +2,14 @@
  * @Author: string
  * @Date: 2024-02-26 10:34:48
  * @LastEditors: string
- * @LastEditTime: 2024-02-28 21:03:52
+ * @LastEditTime: 2024-02-29 11:17:59
  * @FilePath: /new_cpp_server/cpp_server/src/Client/Client.cpp
  * @Description:
  *
  * Copyright (c) 2024 by ${git_name_email}, All Rights Reserved.
  */
 #include <cpp_server/Client/Client.h>
-
+#include <cpp_server/AsyncHandle.h>
 // 构造函数
 Client::Client(const int &fd_, int _epollfd, char (&_BUF)[BUF_SIZE], bool is_need_epoll)
     :fd(fd_),epollfd(_epollfd),BUF(_BUF) { 

@@ -2,7 +2,7 @@
  * @Author: string
  * @Date: 2024-02-26 10:25:26
  * @LastEditors: string
- * @LastEditTime: 2024-02-28 20:09:02
+ * @LastEditTime: 2024-02-29 16:37:15
  * @FilePath: /new_cpp_server/cpp_server/src/Server.cpp
  * @Description: 主要的客户端
  * 
@@ -16,6 +16,7 @@
 #include<arpa/inet.h>
 #include<cpp_server/util.h>
 #include<signal.h>
+#include<cpp_server/AsyncHandle.h>
 
 int sigfd = eventfd(0, EFD_NONBLOCK|EFD_CLOEXEC); //信号的事件描述符
 
@@ -42,12 +43,13 @@ void Server::listen(int port_, std::function<void()> fn,int thread_num){
     addr.sin_port = htons(port_);
     if ( bind(listenfd, (sockaddr*)&addr, sizeof(addr)) < 0)
         perror("create listen socket fail"),exit(0);
-    ::listen(listenfd, 10240);
+    
     // 跳过wait_time直接关闭，仅调试时开启
     // #ifdef DEBUG
     int temp = 1;
     setsockopt(listenfd, SOL_SOCKET, SO_REUSEADDR, &temp, sizeof(temp));
     // #endif
+    ::listen(listenfd, 10240);
 
     // 加入监听事件
     epoll_add_read_LT(epollfd, listenfd);
@@ -73,6 +75,7 @@ void Server::run(){
         pthread_t p;
         pthread_create(&p, NULL, start_thread, sub_reactor);
     }
+    async_task_io = shared_ptr<AsyncHandleThread>(new AsyncHandleThread());
 
     // 主循环
     while(1){
@@ -115,6 +118,10 @@ void Server::get(const string& url, const std::function<void(Req&, Res&)> &fn)
 void Server::post(const string& url, const std::function<void(Req&, Res&)> &fn)
 {
     HttpClient::post_progress[url].emplace_back(fn);
+}
+
+void Server::static_file(string url, string local_url){
+    HttpClient::static_map[url] = local_url;
 }
 
 

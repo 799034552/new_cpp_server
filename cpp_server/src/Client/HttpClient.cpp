@@ -2,7 +2,7 @@
  * @Author: string
  * @Date: 2024-02-26 10:45:31
  * @LastEditors: string
- * @LastEditTime: 2024-02-28 21:06:50
+ * @LastEditTime: 2024-02-29 17:13:44
  * @FilePath: /new_cpp_server/cpp_server/src/Client/HttpClient.cpp
  * @Description:
  *
@@ -11,12 +11,14 @@
 #include <cpp_server/Client/HttpClient.h>
 #include <iostream>
 #include <fstream>
+#include <sys/stat.h>
 using std::cout;
 using std::endl;
 using std::ifstream;
 
 unordered_map<string, std::vector<std::function<void(Req&, Res&)>>> HttpClient::get_progress;
 unordered_map<string, std::vector<std::function<void(Req&, Res&)>>> HttpClient::post_progress;
+unordered_map<string, string> HttpClient::static_map;
 
 /**
  * @brief 初始化httpclient
@@ -47,6 +49,7 @@ void HttpClient::reset()
     res.header["Keep-Alive"] = "timeout=20000";
     res.header["Content-Type"] = "text/plain";
     res.header["Server"] = "string\'s server";
+    file_name.clear();
 }
 
 /**
@@ -77,17 +80,18 @@ void HttpClient::read_fn()
                 break;
             default:
                 goto NO_NEED_LINE;
-            case HTTP_STATE::BODY:
-                http_state = parse_body();
-            case HTTP_STATE::BAD:
-                is_close = true;
             }
         }
     }
     NO_NEED_LINE:
     if (http_state == HTTP_STATE::BODY)
         http_state = parse_body();
-
+    else if (http_state == HTTP_STATE::WS){
+        // 如果读取到了WS升级协议
+        // 向subReactor添加websocket客户端，并自杀
+        need_close_fd = false;
+        is_close = true;
+    }
     // http请求读取完成
     if (http_state == HTTP_STATE::OK){
         printf("http读取完成\n");
@@ -95,8 +99,31 @@ void HttpClient::read_fn()
         // 如果是GET请求
         if (header["method"] == "GET"){
             auto progress_list = get_progress.find(url);
-            if (progress_list == get_progress.end())
-                res.http_status = 404;
+            if (progress_list == get_progress.end()){
+                // 找到baseurl
+                auto pos = url.find('/', 1);
+                string base_url, leaf_url;
+                if (pos != string::npos){
+                    base_url = url.substr(0, pos);
+                    leaf_url = url.substr(pos);
+                }
+                printf("base_url:%s,leaf_url%s\n",base_url.c_str(), leaf_url.c_str());
+                // 查找静态文件映射表
+                auto find_res = static_map.find(base_url);
+                if (find_res != static_map.end()){
+                    string file_path = find_res->second + leaf_url;
+                    struct stat buffer;
+                    printf("收到了文件地址%s\n", file_path.c_str());
+                    if (stat(file_path.c_str(), &buffer) == 0){
+                        // 如果文件存在
+                        file_name = file_path;
+                        res.http_status = 200;
+                    } else
+                        res.http_status = 404;
+                }else{
+                    res.http_status = 404;
+                }
+            }
             else{
                 res.http_status = 200;
                 for(auto &fn: progress_list->second){
@@ -133,13 +160,47 @@ void HttpClient::res2send_buf(){
         res.send_buf = "404了";
         break;
     }
-    res.header["Content-Length"] = std::to_string(res.send_buf.size());
-    for(const auto &temp: res.header)
-        send_buf += (temp.first+ ": " + temp.second + "\r\n");
-    send_buf += "\r\n";
-    send_buf += res.send_buf;
+    // 如果不是传输文件
+    if (file_name.empty()){
+        res.header["Content-Length"] = std::to_string(res.send_buf.size());
+        for(const auto &temp: res.header)
+            send_buf += (temp.first+ ": " + temp.second + "\r\n");
+        send_buf += "\r\n";
+        send_buf += res.send_buf;
+    } else{
+    // 如果传输的是文件
+        // 根据后缀设置type
+        // int point_pos = file_name.find_last_of('.');
+        // string tag;
+        // if (point_pos != string::npos){
+        //     tag = file_name.substr(point_pos+1);
+        // }
+        // static const unordered_map<string, string> content_type_map = {
+        //     {"mp3", "audio/mpeg"},
+        //     {"jpg", "image/jpeg"},
+        //     {"jpeg", "image/jpeg"},
+        //     {"gif", "image/gif"},
+        //     {"htm", "text/html"},
+        //     {"html", "text/html"},
+        //     {"mp3", "audio/mpeg"},
+        //     {"mp4", "video/mp4"}
+        // };
+        // auto find_res = content_type_map.find(tag);
+        // if (find_res != content_type_map.cend()){
+        //     res.header["Content-Type"] = find_res->second;
+        // }
+
+        struct stat buffer;
+        stat(file_name.c_str(), &buffer);
+        res.header["Content-Length"] = std::to_string(buffer.st_size);
+        for(const auto &temp: res.header)
+            send_buf += (temp.first+ ": " + temp.second + "\r\n");
+        send_buf += "\r\n";
+    }
+
 }
 
+// 解析url
 HttpClient::HTTP_STATE HttpClient::parse_url(const string &line)
 {
     auto line_res = split_const(line, {' ', '\t'});
@@ -251,10 +312,17 @@ HttpClient::HTTP_STATE HttpClient::parse_body()
 
 void HttpClient::write_fn()
 {
-    if (header["Connection"] != "Keep-Alive")
-        is_close = true;
-    reset();
-    change_to_read();
+    if (!file_name.empty()){
+        // 如果传输的是文件
+        async_task_io->send_file(file_name, fd, end_file_wake_up_fd);
+        update_event(0);
+    } else{
+        // 如果传输的不是文件
+        if (header["Connection"] != "Keep-Alive")
+            is_close = true;
+        reset();
+        change_to_read();
+    }
 }
 
 // void HttpClient::read_to_send(const Res &res)

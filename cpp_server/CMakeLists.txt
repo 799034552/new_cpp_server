@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 3.10)
 project(cpp_server)
 file(GLOB_RECURSE srcs ./src/*.cpp)
+find_package(OpenSSL REQUIRED)
 add_library(cpp_server STATIC ${srcs})
 target_include_directories(cpp_server PUBLIC ./include)
+target_link_libraries(cpp_server PUBLIC uring OpenSSL::SSL OpenSSL::Crypto)

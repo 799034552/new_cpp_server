@@ -2,7 +2,7 @@
  * @Author: string
  * @Date: 2024-02-26 11:09:11
  * @LastEditors: string
- * @LastEditTime: 2024-02-28 15:55:01
+ * @LastEditTime: 2024-02-29 17:47:52
  * @FilePath: /new_cpp_server/cpp_server/include/cpp_server/util.h
  * @Description: 工具函数库
  * 
@@ -26,3 +26,4 @@ void epoll_add_read_LT(int epollfd, int fd);
 // 使用串进行分割字符
 vector<string> split_const(const string &s, std::initializer_list<const char> sp);
 void trim(string &s);
+std::string m_base64_encode(unsigned char const* bytes_to_encode, unsigned int in_len);

@@ -2,7 +2,7 @@
  * @Author: string
  * @Date: 2024-02-26 10:25:31
  * @LastEditors: string
- * @LastEditTime: 2024-02-28 20:07:07
+ * @LastEditTime: 2024-02-29 14:09:47
  * @FilePath: /new_cpp_server/cpp_server/include/cpp_server/Server.h
  * @Description: 
  * 
@@ -35,5 +35,6 @@ class Server{
         void get(const string& url, const std::function<void(Req&, Res&)> &fn);
         void post(const string& url, const std::function<void(Req&, Res&)> &fn);
         void run();
+        void static_file(string url, string local_url);
         ~Server();
 };

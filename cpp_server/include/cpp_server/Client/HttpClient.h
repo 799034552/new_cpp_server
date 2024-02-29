@@ -2,7 +2,7 @@
  * @Author: string
  * @Date: 2024-02-26 10:45:24
  * @LastEditors: string
- * @LastEditTime: 2024-02-28 20:13:02
+ * @LastEditTime: 2024-02-29 17:33:11
  * @FilePath: /new_cpp_server/cpp_server/include/cpp_server/Client/HttpClient.h
  * @Description: 
  * 
@@ -12,6 +12,7 @@
 #include <unordered_map>
 #include <string>
 #include<cpp_server/Client/Client.h>
+#include<cpp_server/Client/HttpClient.h>
 #include<map>
 using std::unordered_map;
 using std::string;
@@ -47,7 +48,6 @@ class HttpClient: public Client {
     HTTP_STATE http_state = HTTP_STATE::URL;
     void read_fn();
     void write_fn();
-    unordered_map<string, string> header;
     unordered_map<string, string> kv_data;
     string body;
     string send_first;
@@ -63,11 +63,13 @@ class HttpClient: public Client {
     bool get_line(string &line);
 
   public:
+    unordered_map<string, string> header;
     Req req;
     Res res;
     // get与post的处理程序
-    static std::unordered_map<string, std::vector<std::function<void(Req&, Res&)>>> get_progress;
-    static std::unordered_map<string, std::vector<std::function<void(Req&, Res&)>>> post_progress;
+    static unordered_map<string, std::vector<std::function<void(Req&, Res&)>>> get_progress;
+    static unordered_map<string, std::vector<std::function<void(Req&, Res&)>>> post_progress;
+    static unordered_map<string, string> static_map;
     HttpClient(const int &fd_, int _epollfd, char (&_BUF)[BUF_SIZE], bool is_need_epoll=true);
 };
 using SP_HttpClient = std::shared_ptr<HttpClient>;
