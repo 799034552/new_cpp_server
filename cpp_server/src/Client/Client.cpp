@@ -2,7 +2,7 @@
  * @Author: string
  * @Date: 2024-02-26 10:34:48
  * @LastEditors: string
- * @LastEditTime: 2024-02-26 20:05:30
+ * @LastEditTime: 2024-02-28 21:03:52
  * @FilePath: /new_cpp_server/cpp_server/src/Client/Client.cpp
  * @Description:
  *
@@ -11,24 +11,27 @@
 #include <cpp_server/Client/Client.h>
 
 // 构造函数
-Client::Client(const int &fd_, SubReactor *_parent)
-    :fd(fd_),is_close(false),parent(_parent),epollfd(_parent->epoll_fd) { 
+Client::Client(const int &fd_, int _epollfd, char (&_BUF)[BUF_SIZE], bool is_need_epoll)
+    :fd(fd_),epollfd(_epollfd),BUF(_BUF) { 
     // 设置为未阻塞
     set_fd_noblock(fd); 
-    // 将监听事件加入到内核中
-
-    epoll_event t;
-    t.data.fd = fd;
-    t.events = EPOLLIN;
-    epoll_ctl(epollfd, EPOLL_CTL_ADD, fd, &t);
-
+    if (is_need_epoll){
+        // 将监听事件加入到内核中
+        epoll_event t;
+        t.data.fd = fd;
+        t.events = EPOLLIN | EPOLLET;
+        epoll_ctl(epollfd, EPOLL_CTL_ADD, fd, &t);
+    }
 };
 // 析构函数
 Client::~Client() {
     if (fd > 0){
-        close(fd);
-        // 将监听事件从内核删除
-        epoll_ctl(epollfd, EPOLL_CTL_DEL, fd, nullptr);
+        if (need_close_fd){
+            printf("真正地删除事件");
+            // 将监听事件从内核删除
+            epoll_ctl(epollfd, EPOLL_CTL_DEL, fd, nullptr);
+            close(fd);
+        }
     }
 };
 
@@ -49,20 +52,28 @@ void Client::handle_event()
     // 可读
     else if (revent & (EPOLLIN | EPOLLPRI | EPOLLRDHUP))
     {
+
         // 每次写入都执行写入回调
         read_all();
+        printf("用户可读，消息为:%s\n", rec_buf.c_str());
         read_fn();
     }
     // 可写
     else if (revent & EPOLLOUT)
     {
+        printf("用户可写:%s\n", send_buf.c_str());
         // 发送后完成回调
         if(write_all()){
+            printf("用户写完成\n");
             write_fn();
+            // 写完后如果读的也关闭了那么就关闭
+            if (is_read_close)
+                is_close = true;
         }
     }
     // 关闭连接了
     if (is_close){
+        printf("要关闭连接\n");
         if (close_fn) close_fn();
     }
 }
@@ -90,8 +101,11 @@ int Client::read_all()
         is_read_close = true;
         return sum;
     }
-    if (n < 0 && (errno == EAGAIN || errno == EWOULDBLOCK))
+    if (n < 0 && (errno == EAGAIN || errno == EWOULDBLOCK)){
+        printf("读完这次了\n");
         return sum;
+    }
+        
     else
         return -1;
 }
@@ -100,7 +114,8 @@ int Client::read_all()
 bool Client::write_all(){
     int n = write(fd, send_buf.data(), send_buf.size());
     // 全部发送成功
-    if (n > 0 && n == send_buf.size()){
+    if (n == send_buf.size()){
+        send_buf.clear();
         return true;
     } else if (n > 0){
     // 部分发送成功过
@@ -110,4 +125,11 @@ bool Client::write_all(){
         is_close = true;
     }
     return false;
+}
+
+void Client::change_to_read(){
+    update_event(EPOLLIN | EPOLLET);
+}
+void Client::change_to_write(){
+    update_event(EPOLLOUT | EPOLLET);
 }

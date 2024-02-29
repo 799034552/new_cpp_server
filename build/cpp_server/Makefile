@@ -178,6 +178,30 @@ src/Client/HttpClient.cpp.s:
 	cd /home/string/c/c/new_cpp_server/build && $(MAKE) $(MAKESILENT) -f cpp_server/CMakeFiles/cpp_server.dir/build.make cpp_server/CMakeFiles/cpp_server.dir/src/Client/HttpClient.cpp.s
 .PHONY : src/Client/HttpClient.cpp.s
 
+src/Client/ReflexClient.o: src/Client/ReflexClient.cpp.o
+.PHONY : src/Client/ReflexClient.o
+
+# target to build an object file
+src/Client/ReflexClient.cpp.o:
+	cd /home/string/c/c/new_cpp_server/build && $(MAKE) $(MAKESILENT) -f cpp_server/CMakeFiles/cpp_server.dir/build.make cpp_server/CMakeFiles/cpp_server.dir/src/Client/ReflexClient.cpp.o
+.PHONY : src/Client/ReflexClient.cpp.o
+
+src/Client/ReflexClient.i: src/Client/ReflexClient.cpp.i
+.PHONY : src/Client/ReflexClient.i
+
+# target to preprocess a source file
+src/Client/ReflexClient.cpp.i:
+	cd /home/string/c/c/new_cpp_server/build && $(MAKE) $(MAKESILENT) -f cpp_server/CMakeFiles/cpp_server.dir/build.make cpp_server/CMakeFiles/cpp_server.dir/src/Client/ReflexClient.cpp.i
+.PHONY : src/Client/ReflexClient.cpp.i
+
+src/Client/ReflexClient.s: src/Client/ReflexClient.cpp.s
+.PHONY : src/Client/ReflexClient.s
+
+# target to generate assembly for a file
+src/Client/ReflexClient.cpp.s:
+	cd /home/string/c/c/new_cpp_server/build && $(MAKE) $(MAKESILENT) -f cpp_server/CMakeFiles/cpp_server.dir/build.make cpp_server/CMakeFiles/cpp_server.dir/src/Client/ReflexClient.cpp.s
+.PHONY : src/Client/ReflexClient.cpp.s
+
 src/Server.o: src/Server.cpp.o
 .PHONY : src/Server.o
 
@@ -202,6 +226,54 @@ src/Server.cpp.s:
 	cd /home/string/c/c/new_cpp_server/build && $(MAKE) $(MAKESILENT) -f cpp_server/CMakeFiles/cpp_server.dir/build.make cpp_server/CMakeFiles/cpp_server.dir/src/Server.cpp.s
 .PHONY : src/Server.cpp.s
 
+src/SubReactor.o: src/SubReactor.cpp.o
+.PHONY : src/SubReactor.o
+
+# target to build an object file
+src/SubReactor.cpp.o:
+	cd /home/string/c/c/new_cpp_server/build && $(MAKE) $(MAKESILENT) -f cpp_server/CMakeFiles/cpp_server.dir/build.make cpp_server/CMakeFiles/cpp_server.dir/src/SubReactor.cpp.o
+.PHONY : src/SubReactor.cpp.o
+
+src/SubReactor.i: src/SubReactor.cpp.i
+.PHONY : src/SubReactor.i
+
+# target to preprocess a source file
+src/SubReactor.cpp.i:
+	cd /home/string/c/c/new_cpp_server/build && $(MAKE) $(MAKESILENT) -f cpp_server/CMakeFiles/cpp_server.dir/build.make cpp_server/CMakeFiles/cpp_server.dir/src/SubReactor.cpp.i
+.PHONY : src/SubReactor.cpp.i
+
+src/SubReactor.s: src/SubReactor.cpp.s
+.PHONY : src/SubReactor.s
+
+# target to generate assembly for a file
+src/SubReactor.cpp.s:
+	cd /home/string/c/c/new_cpp_server/build && $(MAKE) $(MAKESILENT) -f cpp_server/CMakeFiles/cpp_server.dir/build.make cpp_server/CMakeFiles/cpp_server.dir/src/SubReactor.cpp.s
+.PHONY : src/SubReactor.cpp.s
+
+src/util.o: src/util.cpp.o
+.PHONY : src/util.o
+
+# target to build an object file
+src/util.cpp.o:
+	cd /home/string/c/c/new_cpp_server/build && $(MAKE) $(MAKESILENT) -f cpp_server/CMakeFiles/cpp_server.dir/build.make cpp_server/CMakeFiles/cpp_server.dir/src/util.cpp.o
+.PHONY : src/util.cpp.o
+
+src/util.i: src/util.cpp.i
+.PHONY : src/util.i
+
+# target to preprocess a source file
+src/util.cpp.i:
+	cd /home/string/c/c/new_cpp_server/build && $(MAKE) $(MAKESILENT) -f cpp_server/CMakeFiles/cpp_server.dir/build.make cpp_server/CMakeFiles/cpp_server.dir/src/util.cpp.i
+.PHONY : src/util.cpp.i
+
+src/util.s: src/util.cpp.s
+.PHONY : src/util.s
+
+# target to generate assembly for a file
+src/util.cpp.s:
+	cd /home/string/c/c/new_cpp_server/build && $(MAKE) $(MAKESILENT) -f cpp_server/CMakeFiles/cpp_server.dir/build.make cpp_server/CMakeFiles/cpp_server.dir/src/util.cpp.s
+.PHONY : src/util.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -217,9 +289,18 @@ help:
 	@echo "... src/Client/HttpClient.o"
 	@echo "... src/Client/HttpClient.i"
 	@echo "... src/Client/HttpClient.s"
+	@echo "... src/Client/ReflexClient.o"
+	@echo "... src/Client/ReflexClient.i"
+	@echo "... src/Client/ReflexClient.s"
 	@echo "... src/Server.o"
 	@echo "... src/Server.i"
 	@echo "... src/Server.s"
+	@echo "... src/SubReactor.o"
+	@echo "... src/SubReactor.i"
+	@echo "... src/SubReactor.s"
+	@echo "... src/util.o"
+	@echo "... src/util.i"
+	@echo "... src/util.s"
 .PHONY : help
 
 

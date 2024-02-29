@@ -73,59 +73,107 @@ cpp_server/CMakeFiles/cpp_server.dir/src/Client/Client.cpp.o: cpp_server/CMakeFi
 cpp_server/CMakeFiles/cpp_server.dir/src/Client/Client.cpp.o: ../cpp_server/src/Client/Client.cpp
 cpp_server/CMakeFiles/cpp_server.dir/src/Client/Client.cpp.o: cpp_server/CMakeFiles/cpp_server.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/string/c/c/new_cpp_server/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object cpp_server/CMakeFiles/cpp_server.dir/src/Client/Client.cpp.o"
-	cd /home/string/c/c/new_cpp_server/build/cpp_server && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT cpp_server/CMakeFiles/cpp_server.dir/src/Client/Client.cpp.o -MF CMakeFiles/cpp_server.dir/src/Client/Client.cpp.o.d -o CMakeFiles/cpp_server.dir/src/Client/Client.cpp.o -c /home/string/c/c/new_cpp_server/cpp_server/src/Client/Client.cpp
+	cd /home/string/c/c/new_cpp_server/build/cpp_server && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT cpp_server/CMakeFiles/cpp_server.dir/src/Client/Client.cpp.o -MF CMakeFiles/cpp_server.dir/src/Client/Client.cpp.o.d -o CMakeFiles/cpp_server.dir/src/Client/Client.cpp.o -c /home/string/c/c/new_cpp_server/cpp_server/src/Client/Client.cpp
 
 cpp_server/CMakeFiles/cpp_server.dir/src/Client/Client.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cpp_server.dir/src/Client/Client.cpp.i"
-	cd /home/string/c/c/new_cpp_server/build/cpp_server && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/string/c/c/new_cpp_server/cpp_server/src/Client/Client.cpp > CMakeFiles/cpp_server.dir/src/Client/Client.cpp.i
+	cd /home/string/c/c/new_cpp_server/build/cpp_server && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/string/c/c/new_cpp_server/cpp_server/src/Client/Client.cpp > CMakeFiles/cpp_server.dir/src/Client/Client.cpp.i
 
 cpp_server/CMakeFiles/cpp_server.dir/src/Client/Client.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cpp_server.dir/src/Client/Client.cpp.s"
-	cd /home/string/c/c/new_cpp_server/build/cpp_server && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/string/c/c/new_cpp_server/cpp_server/src/Client/Client.cpp -o CMakeFiles/cpp_server.dir/src/Client/Client.cpp.s
+	cd /home/string/c/c/new_cpp_server/build/cpp_server && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/string/c/c/new_cpp_server/cpp_server/src/Client/Client.cpp -o CMakeFiles/cpp_server.dir/src/Client/Client.cpp.s
 
 cpp_server/CMakeFiles/cpp_server.dir/src/Client/HttpClient.cpp.o: cpp_server/CMakeFiles/cpp_server.dir/flags.make
 cpp_server/CMakeFiles/cpp_server.dir/src/Client/HttpClient.cpp.o: ../cpp_server/src/Client/HttpClient.cpp
 cpp_server/CMakeFiles/cpp_server.dir/src/Client/HttpClient.cpp.o: cpp_server/CMakeFiles/cpp_server.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/string/c/c/new_cpp_server/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object cpp_server/CMakeFiles/cpp_server.dir/src/Client/HttpClient.cpp.o"
-	cd /home/string/c/c/new_cpp_server/build/cpp_server && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT cpp_server/CMakeFiles/cpp_server.dir/src/Client/HttpClient.cpp.o -MF CMakeFiles/cpp_server.dir/src/Client/HttpClient.cpp.o.d -o CMakeFiles/cpp_server.dir/src/Client/HttpClient.cpp.o -c /home/string/c/c/new_cpp_server/cpp_server/src/Client/HttpClient.cpp
+	cd /home/string/c/c/new_cpp_server/build/cpp_server && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT cpp_server/CMakeFiles/cpp_server.dir/src/Client/HttpClient.cpp.o -MF CMakeFiles/cpp_server.dir/src/Client/HttpClient.cpp.o.d -o CMakeFiles/cpp_server.dir/src/Client/HttpClient.cpp.o -c /home/string/c/c/new_cpp_server/cpp_server/src/Client/HttpClient.cpp
 
 cpp_server/CMakeFiles/cpp_server.dir/src/Client/HttpClient.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cpp_server.dir/src/Client/HttpClient.cpp.i"
-	cd /home/string/c/c/new_cpp_server/build/cpp_server && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/string/c/c/new_cpp_server/cpp_server/src/Client/HttpClient.cpp > CMakeFiles/cpp_server.dir/src/Client/HttpClient.cpp.i
+	cd /home/string/c/c/new_cpp_server/build/cpp_server && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/string/c/c/new_cpp_server/cpp_server/src/Client/HttpClient.cpp > CMakeFiles/cpp_server.dir/src/Client/HttpClient.cpp.i
 
 cpp_server/CMakeFiles/cpp_server.dir/src/Client/HttpClient.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cpp_server.dir/src/Client/HttpClient.cpp.s"
-	cd /home/string/c/c/new_cpp_server/build/cpp_server && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/string/c/c/new_cpp_server/cpp_server/src/Client/HttpClient.cpp -o CMakeFiles/cpp_server.dir/src/Client/HttpClient.cpp.s
+	cd /home/string/c/c/new_cpp_server/build/cpp_server && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/string/c/c/new_cpp_server/cpp_server/src/Client/HttpClient.cpp -o CMakeFiles/cpp_server.dir/src/Client/HttpClient.cpp.s
+
+cpp_server/CMakeFiles/cpp_server.dir/src/Client/ReflexClient.cpp.o: cpp_server/CMakeFiles/cpp_server.dir/flags.make
+cpp_server/CMakeFiles/cpp_server.dir/src/Client/ReflexClient.cpp.o: ../cpp_server/src/Client/ReflexClient.cpp
+cpp_server/CMakeFiles/cpp_server.dir/src/Client/ReflexClient.cpp.o: cpp_server/CMakeFiles/cpp_server.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/string/c/c/new_cpp_server/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object cpp_server/CMakeFiles/cpp_server.dir/src/Client/ReflexClient.cpp.o"
+	cd /home/string/c/c/new_cpp_server/build/cpp_server && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT cpp_server/CMakeFiles/cpp_server.dir/src/Client/ReflexClient.cpp.o -MF CMakeFiles/cpp_server.dir/src/Client/ReflexClient.cpp.o.d -o CMakeFiles/cpp_server.dir/src/Client/ReflexClient.cpp.o -c /home/string/c/c/new_cpp_server/cpp_server/src/Client/ReflexClient.cpp
+
+cpp_server/CMakeFiles/cpp_server.dir/src/Client/ReflexClient.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cpp_server.dir/src/Client/ReflexClient.cpp.i"
+	cd /home/string/c/c/new_cpp_server/build/cpp_server && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/string/c/c/new_cpp_server/cpp_server/src/Client/ReflexClient.cpp > CMakeFiles/cpp_server.dir/src/Client/ReflexClient.cpp.i
+
+cpp_server/CMakeFiles/cpp_server.dir/src/Client/ReflexClient.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cpp_server.dir/src/Client/ReflexClient.cpp.s"
+	cd /home/string/c/c/new_cpp_server/build/cpp_server && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/string/c/c/new_cpp_server/cpp_server/src/Client/ReflexClient.cpp -o CMakeFiles/cpp_server.dir/src/Client/ReflexClient.cpp.s
 
 cpp_server/CMakeFiles/cpp_server.dir/src/Server.cpp.o: cpp_server/CMakeFiles/cpp_server.dir/flags.make
 cpp_server/CMakeFiles/cpp_server.dir/src/Server.cpp.o: ../cpp_server/src/Server.cpp
 cpp_server/CMakeFiles/cpp_server.dir/src/Server.cpp.o: cpp_server/CMakeFiles/cpp_server.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/string/c/c/new_cpp_server/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object cpp_server/CMakeFiles/cpp_server.dir/src/Server.cpp.o"
-	cd /home/string/c/c/new_cpp_server/build/cpp_server && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT cpp_server/CMakeFiles/cpp_server.dir/src/Server.cpp.o -MF CMakeFiles/cpp_server.dir/src/Server.cpp.o.d -o CMakeFiles/cpp_server.dir/src/Server.cpp.o -c /home/string/c/c/new_cpp_server/cpp_server/src/Server.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/string/c/c/new_cpp_server/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object cpp_server/CMakeFiles/cpp_server.dir/src/Server.cpp.o"
+	cd /home/string/c/c/new_cpp_server/build/cpp_server && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT cpp_server/CMakeFiles/cpp_server.dir/src/Server.cpp.o -MF CMakeFiles/cpp_server.dir/src/Server.cpp.o.d -o CMakeFiles/cpp_server.dir/src/Server.cpp.o -c /home/string/c/c/new_cpp_server/cpp_server/src/Server.cpp
 
 cpp_server/CMakeFiles/cpp_server.dir/src/Server.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cpp_server.dir/src/Server.cpp.i"
-	cd /home/string/c/c/new_cpp_server/build/cpp_server && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/string/c/c/new_cpp_server/cpp_server/src/Server.cpp > CMakeFiles/cpp_server.dir/src/Server.cpp.i
+	cd /home/string/c/c/new_cpp_server/build/cpp_server && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/string/c/c/new_cpp_server/cpp_server/src/Server.cpp > CMakeFiles/cpp_server.dir/src/Server.cpp.i
 
 cpp_server/CMakeFiles/cpp_server.dir/src/Server.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cpp_server.dir/src/Server.cpp.s"
-	cd /home/string/c/c/new_cpp_server/build/cpp_server && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/string/c/c/new_cpp_server/cpp_server/src/Server.cpp -o CMakeFiles/cpp_server.dir/src/Server.cpp.s
+	cd /home/string/c/c/new_cpp_server/build/cpp_server && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/string/c/c/new_cpp_server/cpp_server/src/Server.cpp -o CMakeFiles/cpp_server.dir/src/Server.cpp.s
+
+cpp_server/CMakeFiles/cpp_server.dir/src/SubReactor.cpp.o: cpp_server/CMakeFiles/cpp_server.dir/flags.make
+cpp_server/CMakeFiles/cpp_server.dir/src/SubReactor.cpp.o: ../cpp_server/src/SubReactor.cpp
+cpp_server/CMakeFiles/cpp_server.dir/src/SubReactor.cpp.o: cpp_server/CMakeFiles/cpp_server.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/string/c/c/new_cpp_server/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object cpp_server/CMakeFiles/cpp_server.dir/src/SubReactor.cpp.o"
+	cd /home/string/c/c/new_cpp_server/build/cpp_server && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT cpp_server/CMakeFiles/cpp_server.dir/src/SubReactor.cpp.o -MF CMakeFiles/cpp_server.dir/src/SubReactor.cpp.o.d -o CMakeFiles/cpp_server.dir/src/SubReactor.cpp.o -c /home/string/c/c/new_cpp_server/cpp_server/src/SubReactor.cpp
+
+cpp_server/CMakeFiles/cpp_server.dir/src/SubReactor.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cpp_server.dir/src/SubReactor.cpp.i"
+	cd /home/string/c/c/new_cpp_server/build/cpp_server && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/string/c/c/new_cpp_server/cpp_server/src/SubReactor.cpp > CMakeFiles/cpp_server.dir/src/SubReactor.cpp.i
+
+cpp_server/CMakeFiles/cpp_server.dir/src/SubReactor.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cpp_server.dir/src/SubReactor.cpp.s"
+	cd /home/string/c/c/new_cpp_server/build/cpp_server && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/string/c/c/new_cpp_server/cpp_server/src/SubReactor.cpp -o CMakeFiles/cpp_server.dir/src/SubReactor.cpp.s
+
+cpp_server/CMakeFiles/cpp_server.dir/src/util.cpp.o: cpp_server/CMakeFiles/cpp_server.dir/flags.make
+cpp_server/CMakeFiles/cpp_server.dir/src/util.cpp.o: ../cpp_server/src/util.cpp
+cpp_server/CMakeFiles/cpp_server.dir/src/util.cpp.o: cpp_server/CMakeFiles/cpp_server.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/string/c/c/new_cpp_server/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object cpp_server/CMakeFiles/cpp_server.dir/src/util.cpp.o"
+	cd /home/string/c/c/new_cpp_server/build/cpp_server && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT cpp_server/CMakeFiles/cpp_server.dir/src/util.cpp.o -MF CMakeFiles/cpp_server.dir/src/util.cpp.o.d -o CMakeFiles/cpp_server.dir/src/util.cpp.o -c /home/string/c/c/new_cpp_server/cpp_server/src/util.cpp
+
+cpp_server/CMakeFiles/cpp_server.dir/src/util.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cpp_server.dir/src/util.cpp.i"
+	cd /home/string/c/c/new_cpp_server/build/cpp_server && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/string/c/c/new_cpp_server/cpp_server/src/util.cpp > CMakeFiles/cpp_server.dir/src/util.cpp.i
+
+cpp_server/CMakeFiles/cpp_server.dir/src/util.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cpp_server.dir/src/util.cpp.s"
+	cd /home/string/c/c/new_cpp_server/build/cpp_server && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/string/c/c/new_cpp_server/cpp_server/src/util.cpp -o CMakeFiles/cpp_server.dir/src/util.cpp.s
 
 # Object files for target cpp_server
 cpp_server_OBJECTS = \
 "CMakeFiles/cpp_server.dir/src/Client/Client.cpp.o" \
 "CMakeFiles/cpp_server.dir/src/Client/HttpClient.cpp.o" \
-"CMakeFiles/cpp_server.dir/src/Server.cpp.o"
+"CMakeFiles/cpp_server.dir/src/Client/ReflexClient.cpp.o" \
+"CMakeFiles/cpp_server.dir/src/Server.cpp.o" \
+"CMakeFiles/cpp_server.dir/src/SubReactor.cpp.o" \
+"CMakeFiles/cpp_server.dir/src/util.cpp.o"
 
 # External object files for target cpp_server
 cpp_server_EXTERNAL_OBJECTS =
 
 cpp_server/libcpp_server.a: cpp_server/CMakeFiles/cpp_server.dir/src/Client/Client.cpp.o
 cpp_server/libcpp_server.a: cpp_server/CMakeFiles/cpp_server.dir/src/Client/HttpClient.cpp.o
+cpp_server/libcpp_server.a: cpp_server/CMakeFiles/cpp_server.dir/src/Client/ReflexClient.cpp.o
 cpp_server/libcpp_server.a: cpp_server/CMakeFiles/cpp_server.dir/src/Server.cpp.o
+cpp_server/libcpp_server.a: cpp_server/CMakeFiles/cpp_server.dir/src/SubReactor.cpp.o
+cpp_server/libcpp_server.a: cpp_server/CMakeFiles/cpp_server.dir/src/util.cpp.o
 cpp_server/libcpp_server.a: cpp_server/CMakeFiles/cpp_server.dir/build.make
 cpp_server/libcpp_server.a: cpp_server/CMakeFiles/cpp_server.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/string/c/c/new_cpp_server/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX static library libcpp_server.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/string/c/c/new_cpp_server/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX static library libcpp_server.a"
 	cd /home/string/c/c/new_cpp_server/build/cpp_server && $(CMAKE_COMMAND) -P CMakeFiles/cpp_server.dir/cmake_clean_target.cmake
 	cd /home/string/c/c/new_cpp_server/build/cpp_server && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/cpp_server.dir/link.txt --verbose=$(VERBOSE)
 

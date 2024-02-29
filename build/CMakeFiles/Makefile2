@@ -98,12 +98,12 @@ cpp_server/clean: cpp_server/CMakeFiles/cpp_server.dir/clean
 CMakeFiles/test_cpp_server.dir/all: cpp_server/CMakeFiles/cpp_server.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_cpp_server.dir/build.make CMakeFiles/test_cpp_server.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_cpp_server.dir/build.make CMakeFiles/test_cpp_server.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/string/c/c/new_cpp_server/build/CMakeFiles --progress-num=5,6 "Built target test_cpp_server"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/string/c/c/new_cpp_server/build/CMakeFiles --progress-num=8,9 "Built target test_cpp_server"
 .PHONY : CMakeFiles/test_cpp_server.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/test_cpp_server.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/string/c/c/new_cpp_server/build/CMakeFiles 6
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/string/c/c/new_cpp_server/build/CMakeFiles 9
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/test_cpp_server.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/string/c/c/new_cpp_server/build/CMakeFiles 0
 .PHONY : CMakeFiles/test_cpp_server.dir/rule
@@ -124,12 +124,12 @@ CMakeFiles/test_cpp_server.dir/clean:
 cpp_server/CMakeFiles/cpp_server.dir/all:
 	$(MAKE) $(MAKESILENT) -f cpp_server/CMakeFiles/cpp_server.dir/build.make cpp_server/CMakeFiles/cpp_server.dir/depend
 	$(MAKE) $(MAKESILENT) -f cpp_server/CMakeFiles/cpp_server.dir/build.make cpp_server/CMakeFiles/cpp_server.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/string/c/c/new_cpp_server/build/CMakeFiles --progress-num=1,2,3,4 "Built target cpp_server"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/string/c/c/new_cpp_server/build/CMakeFiles --progress-num=1,2,3,4,5,6,7 "Built target cpp_server"
 .PHONY : cpp_server/CMakeFiles/cpp_server.dir/all
 
 # Build rule for subdir invocation for target.
 cpp_server/CMakeFiles/cpp_server.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/string/c/c/new_cpp_server/build/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/string/c/c/new_cpp_server/build/CMakeFiles 7
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cpp_server/CMakeFiles/cpp_server.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/string/c/c/new_cpp_server/build/CMakeFiles 0
 .PHONY : cpp_server/CMakeFiles/cpp_server.dir/rule

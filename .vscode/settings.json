@@ -49,6 +49,9 @@
         "ratio": "cpp",
         "semaphore": "cpp",
         "stop_token": "cpp",
-        "thread": "cpp"
+        "thread": "cpp",
+        "unordered_set": "cpp",
+        "map": "cpp",
+        "fstream": "cpp"
     }
 }

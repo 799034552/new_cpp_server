@@ -2,7 +2,7 @@
  * @Author: string
  * @Date: 2024-02-26 10:25:31
  * @LastEditors: string
- * @LastEditTime: 2024-02-26 21:34:37
+ * @LastEditTime: 2024-02-28 20:07:07
  * @FilePath: /new_cpp_server/cpp_server/include/cpp_server/Server.h
  * @Description: 
  * 
@@ -12,22 +12,28 @@
 #include<functional>
 #include<string>
 #include<memory>
-#include<SubReactor.h>
+#include<cpp_server/SubReactor.h>
 #include<vector>
+#include<cpp_server/conf.h>
+#include<cpp_server/Client/HttpClient.h>
 using std::string;
 using std::function;
 using std::vector;
 using std::unique_ptr;
+using std::shared_ptr;
 class Server{
     private:
         int port; //端口
         int listenfd; //监听描述符
-        vector<unique_ptr<SubReactor>> sub_reactor_list; // subreactor列表
+        int epollfd; // 主Reactor的事件描述符
+        vector<SubReactor*> sub_reactor_list; // subreactor列表
+        int now_sub_reactor_i; // 下一个处理的sub_reactor的索引
+        epoll_event epoll_events[EPOLL_SIZE];
     public:
-        Server()=default;
+        Server();
         void listen(int port_, std::function<void()> fn = NULL,int thread_num = 4);
-        void get(const string &url, function<void()>);
+        void get(const string& url, const std::function<void(Req&, Res&)> &fn);
+        void post(const string& url, const std::function<void(Req&, Res&)> &fn);
         void run();
+        ~Server();
 };
-
-void test();

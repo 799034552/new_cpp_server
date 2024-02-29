@@ -2,7 +2,7 @@
  * @Author: string
  * @Date: 2024-02-26 15:42:07
  * @LastEditors: string
- * @LastEditTime: 2024-02-26 21:13:13
+ * @LastEditTime: 2024-02-28 20:15:57
  * @FilePath: /new_cpp_server/cpp_server/include/cpp_server/SubReactor.h
  * @Description: 
  * 
@@ -12,30 +12,49 @@
 #include<memory>
 #include<unordered_set>
 #include<sys/eventfd.h>
-#include<cpp_server/Client/Client.h>
+#include<vector>
+#include<unordered_map>
+#include<sys/epoll.h>
+#include<cpp_server/conf.h>
+
+#include<cpp_server/Client/ReflexClient.h>
+#include<cpp_server/Client/HttpClient.h>
 using std::unordered_set;
-#define BUF_SIZE 1024
+using std::unordered_map;
+using std::vector;
+
+// class Client;
+// using SP_Client = std::shared_ptr<Client>;
+
 class SubReactor{
     public:
         // 读数据时候的缓存池
-        char buf[BUF_SIZE];
+        char BUF[BUF_SIZE];
         // 内核事件表描述符
-        int epoll_fd;
-        
-        SubReactor(int _notify_fd)
-            :epoll_fd(epoll_create1(0)),
-            notify_fd(eventfd(0, EFD_NONBLOCK|EFD_CLOEXEC))
-        {
-            epoll_fd = epoll_create1(0);
-        }
-        void add_delete_client(SP_Client c){ delete_client_pool.insert(c);}
-        void run();
-
-    private:
+        int epollfd;
         // 主线程通知描述符
         int notify_fd;
+        // 工作列表
+        vector<int> job_list;
+        // 与工作列表相匹配的锁
+        pthread_mutex_t mutex;
+        void add_job(int fd);
+        void get_job();
+        void add_client(int fd);
+        void delete_clients();
+        epoll_event epoll_events[EPOLL_SIZE];
+
+        SubReactor();
+        void run();
+        
+        ~SubReactor(){
+            pthread_mutex_destroy(&mutex);
+        }
+
+    private:
         // 每个subReactor的客户池
         unordered_set<SP_Client> client_pool;
+        unordered_map<int, SP_Client> fd2Client;
         // 等待删除的客户池
         unordered_set<SP_Client> delete_client_pool;
 };

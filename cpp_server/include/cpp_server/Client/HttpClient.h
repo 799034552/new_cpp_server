@@ -1,29 +1,73 @@
+/*
+ * @Author: string
+ * @Date: 2024-02-26 10:45:24
+ * @LastEditors: string
+ * @LastEditTime: 2024-02-28 20:13:02
+ * @FilePath: /new_cpp_server/cpp_server/include/cpp_server/Client/HttpClient.h
+ * @Description: 
+ * 
+ * Copyright (c) 2024 by ${git_name_email}, All Rights Reserved. 
+ */
 #pragma once
 #include <unordered_map>
 #include <string>
+#include<cpp_server/Client/Client.h>
+#include<map>
 using std::unordered_map;
 using std::string;
 // HTTP请求的Req
 class Req {
   public:
-    // 判断是否是json数据
-    bool is_json;
-    std::unordered_map<string,string> *data;
+    const unordered_map<string,string> &kv_data;
+    const unordered_map<string,string> &header;
     // 普通数据的text
-    string *text;
-    Req() = default;
-    void set(bool is_json_, std::unordered_map<string,string> *data_, string *text_)
-      {is_json = is_json_; data = data_; text =text_;}
+    const string &body;
+    Req(const unordered_map<string,string> &_kv_data,const unordered_map<string,string> &_header,const string &_body)
+        :kv_data(_kv_data),header(_header),body(_body){}
 };
 
 class Res {
   private:
-    // 发送缓存
-    string send_buf;
-    std::unordered_map<string,string> &header;
+    
   public:
+    // 发送缓存
+    int http_status;
+    string send_buf;
+    std::unordered_map<string,string> header;
     void send(const string &s) { send_buf += s; }
     void add_header(const string &a, const string &b) {header[a] = b;}
-    string get_buf() const { return send_buf; }
-    Res(std::unordered_map<string,string> &header_):header(header_){}
+    Res()=default;
 };
+
+class HttpClient: public Client {
+  private:
+    // HTTP解析状态
+    // 正在解析URL  |  正在解析HEAD  | 正在解析BODY | 解析完成 | 解析错误 | 升级成WS
+    enum class HTTP_STATE {URL, HEAD, BODY, OK, BAD, WS};
+    HTTP_STATE http_state = HTTP_STATE::URL;
+    void read_fn();
+    void write_fn();
+    unordered_map<string, string> header;
+    unordered_map<string, string> kv_data;
+    string body;
+    string send_first;
+    // 解析URL行
+    HTTP_STATE parse_url(const string &);
+    // 解析header行
+    HTTP_STATE parse_head(const string &);
+    // 解析BODY行
+    HTTP_STATE parse_body();
+    //重置http状态
+    void reset();
+    void res2send_buf();
+    bool get_line(string &line);
+
+  public:
+    Req req;
+    Res res;
+    // get与post的处理程序
+    static std::unordered_map<string, std::vector<std::function<void(Req&, Res&)>>> get_progress;
+    static std::unordered_map<string, std::vector<std::function<void(Req&, Res&)>>> post_progress;
+    HttpClient(const int &fd_, int _epollfd, char (&_BUF)[BUF_SIZE], bool is_need_epoll=true);
+};
+using SP_HttpClient = std::shared_ptr<HttpClient>;
